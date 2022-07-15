@@ -1,18 +1,20 @@
 import VideoListEntry from './VideoListEntry.js';
 
-var VideoList = (props) => (
+var VideoList = (props) => {
   //  componentDidUpdate() {
   //   console.log(props)
   //  }
 
+  console.log('test')
 
+  return (
   <div className="video-list">
       {props.videos.map(video =>
-          <VideoListEntry video={video} key={video.id.videoId}/>
+          <VideoListEntry video={video} key={video.id.videoId} passFunc={props.onClickChange}/>
         )}
   </div>
-
-);
+  )
+};
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
