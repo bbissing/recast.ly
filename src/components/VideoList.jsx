@@ -7,30 +7,10 @@ var VideoList = (props) => (
 
 
   <div className="video-list">
-      <div><h5><em>{props.videos.map(video =>
-        <div key={video.id.videoId}>
-          <VideoListEntry video={video} />
-        </div>
-        )}</em>view goes here</h5></div>
+      {props.videos.map(video =>
+          <VideoListEntry video={video} key={video.id.videoId}/>
+        )}
   </div>
-
-// var VideoList = (props) => (
-//   <ul>
-//     {props.videos.map(video =>
-//       <VidoListEntry video={video} />
-//     )}
-//   </ul>
-// );
-
-
-
-  // <div className="video-list">
-  //   <div><h5><em><VideoListEntry video={props.videos[0]}/></em> view goes here</h5></div>
-  //   <div><h5><em><VideoListEntry video={props.videos[1]}/></em> view goes here</h5></div>
-  //   <div><h5><em><VideoListEntry video={props.videos[2]}/></em> view goes here</h5></div>
-  //   <div><h5><em><VideoListEntry video={props.videos[3]}/></em> view goes here</h5></div>
-  //   <div><h5><em><VideoListEntry video={props.videos[4]}/></em> view goes here</h5></div>
-  // </div>
 
 );
 
