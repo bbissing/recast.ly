@@ -8,7 +8,7 @@
   "scripts": {
     "test": "live-server --open=./SpecRunner.html --port=8081",
     "start": "live-server",
-    "build": "npx babel . --out-dir compiled --presets=@babel/preset-react --ignore=node_modules,compiled -w --source-maps inline"
+    "build": "npx babel . --out-dir compiled --presets=@babel/preset-react --ignore=node_modules,compiled --watch --source-maps inline"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",

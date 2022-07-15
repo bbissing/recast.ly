@@ -18,6 +18,7 @@ describe('VideoList', function() {
     shallowRenderer.render(
       <VideoList videos={oneFakeVideo} />
     );
+  console.log('test')
 
     var videoList = shallowRenderer.getRenderOutput();
     expect(videoList.props.children).to.have.length(1);
