@@ -1,18 +1,14 @@
 import VideoListEntry from './VideoListEntry.js';
 
 var VideoList = (props) => {
-  //  componentDidUpdate() {
-  //   console.log(props)
-  //  }
-
 
   return (
-  <div className="video-list">
+    <div className="video-list">
       {props.videos.map(video =>
-          <VideoListEntry video={video} state={props.state} key={video.id.videoId} onClickChange={props.onClickChange}/>
-        )}
-  </div>
-  )
+        <VideoListEntry video={video} state={props.state} key={video.id.videoId} onClickChange={props.onClickChange}/>
+      )}
+    </div>
+  );
 };
 
 // PropTypes tell other developers what `props` a component expects
@@ -24,3 +20,4 @@ VideoList.propTypes = {
 // In the ES6 spec, files are "modules" and do not share a top-level scope.
 // `var` declarations will only exist globally where explicitly defined.
 export default VideoList;
+
