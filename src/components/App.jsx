@@ -1,35 +1,37 @@
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
-
+import searchYouTube from '../lib/searchYouTube.js';
+import Search from './Search.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      done: false,
-      currentVideo: exampleVideoData[0]
+      currentVideo: exampleVideoData[0],
+      videos: exampleVideoData
     };
     this.onVideoTitleClick = this.onVideoTitleClick.bind(this);
 
   }
+
   populateWithYoutubeData(query) {
-    this.props.searchYouTube(query, (data) => {
+    console.log(query);
+    searchYouTube(query, (data) => {
+      console.log(this);
       this.setState({
         currentVideo: data[0],
         videos: data
       });
     });
+
   }
 
   componentDidMount() {
     //props.searchYouTube('cat', console.log('success'));
-    this.populateWithYoutubeData('cat');
+    this.populateWithYoutubeData('Cute cat video');
     //console.log('test');
-    setState()
   }
-
-
 
   onVideoTitleClick(event, click) {
     //console.log(event, click)
@@ -40,9 +42,8 @@ class App extends React.Component {
         current = index;
       }
     });
-
     setTimeout(this.setState({
-      done:!this.state.done,
+      done: !this.state.done,
       currentVideo: exampleVideoData[current]
     }), 1000);
 
@@ -52,8 +53,8 @@ class App extends React.Component {
     return (
       <div>
         <nav className="navbar">
-          <div className="col-md-6 offset-md-3" >
-            <div><h5><em>test</em> test</h5></div>
+          <div className="col-md-6 offset-md-3">
+            <Search populateWithYoutubeData={this.populateWithYoutubeData.bind(this)}/>
           </div>
         </nav>
         <div className="row">
@@ -61,7 +62,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.currentVideo}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos={exampleVideoData} state={this.state} onClickChange={this.onVideoTitleClick} test={this.state.done}/>
+            <VideoList videos={this.state.videos} onClickChange={this.onVideoTitleClick} test={this.state.done}/>
           </div>
         </div>
       </div>
