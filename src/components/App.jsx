@@ -17,7 +17,7 @@ class App extends React.Component {
     this.onVideoTitleClick = this.onVideoTitleClick.bind(this);
   }
   onVideoTitleClick(event, click) {
-    console.log(event, click)
+    //console.log(event, click)
     click.preventDefault();
     let current;
     exampleVideoData.forEach(function(item, index) {
