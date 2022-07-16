@@ -10,18 +10,25 @@ import VideoPlayer from './VideoPlayer.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this);
     this.state = {
       done: false,
       currentVideo: exampleVideoData[0]
     };
     this.onVideoTitleClick = this.onVideoTitleClick.bind(this);
   }
-  onVideoTitleClick(event) {
-    this.setState({
-      done:!this.state.done
-      currentVideo: event
+  onVideoTitleClick(event, click) {
+    console.log(event, click)
+    click.preventDefault();
+    let current;
+    exampleVideoData.forEach(function(item, index) {
+      if (item.id.videoId === event) {
+        current = index;
+      }
     })
+    setTimeout(this.setState({
+      done:!this.state.done,
+      currentVideo: exampleVideoData[current]
+    }), 1000)
 
   }
 
@@ -38,7 +45,7 @@ class App extends React.Component {
           <VideoPlayer video={this.state.currentVideo}/>
         </div>
         <div className="col-md-5">
-          <VideoList videos={exampleVideoData} onClickChange={this.onVideoTitleClick} test={this.state.done}/>
+          <VideoList videos={exampleVideoData} state={this.state} onClickChange={this.onVideoTitleClick} test={this.state.done}/>
         </div>
       </div>
     </div>
