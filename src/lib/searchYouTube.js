@@ -10,6 +10,7 @@ var searchYouTube = (query, callback) => {
     url: 'https://app-hrsei-api.herokuapp.com/api/recastly/videos',
     type: 'GET',
     data: {youtubeApiKey: YOUTUBE_API_KEY, q: query},
+    maxResults: 5,
     success: callback
   });
 };
